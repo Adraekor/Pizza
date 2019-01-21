@@ -24,7 +24,7 @@ namespace Cours2
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/RestaurantMenu");
+            await NavigationService.NavigateAsync("AppliMenu/NavigationPage/RestaurantMenu");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -36,6 +36,7 @@ namespace Cours2
             containerRegistry.RegisterForNavigation<NewPizza, NewPizzaViewModel>();
             containerRegistry.RegisterForNavigation<RestaurantMenu, RestaurantMenuViewModel>();
             containerRegistry.RegisterForNavigation<PizzaDetails, PizzaDetailsViewModel>();
+            containerRegistry.RegisterForNavigation<AppliMenu, AppliMenuViewModel>();
 
             containerRegistry.RegisterSingleton<IPizzaService, PizzaService>();
             containerRegistry.RegisterSingleton<IIngredientService, IngredientService>();

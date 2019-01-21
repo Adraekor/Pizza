@@ -12,7 +12,7 @@ namespace Cours2.Services
 
         void AddPizza(Pizza pizza);
 
-        Pizza GetPizza(int pos);
+        Pizza GetPizza(int id);
 
     }
 }

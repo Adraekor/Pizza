@@ -11,27 +11,7 @@
         HorizontalOptions="FillAndExpand"
         Margin="70, 150, 70, 100">
 
-        <Entry
-            Text="{Binding UserName}"
-            Placeholder="User name"
-            HorizontalOptions="FillAndExpand"
-            FontSize="Large"
-            Margin="50,0,50,0"/>
-
-        <Entry
-            Text="{Binding Password}"
-            IsPassword="True"
-            Placeholder="Password"
-            HorizontalOptions="FillAndExpand"
-            FontSize="Large"
-            Margin="50,30,50,100"/>
-
-        <Button
-            Text="Validation"
-            Command="{Binding CommandMovePage}"
-            FontSize="Large"
-            Margin="200, 0, 200, 0"
-            Padding="20,20,20,20"/>
+        <Label Text="View Carte" />
 
     </StackLayout>
   
