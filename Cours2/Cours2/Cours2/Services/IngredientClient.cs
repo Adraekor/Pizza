@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace Cours2.Services
 {
-    public class IngredientClient : BindableBase
+    public class IngredientClient
 	{
         public string DbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "PizzaDB.db");
         public IngredientClient()
@@ -22,8 +22,13 @@ namespace Cours2.Services
             using (var db = new LiteDatabase(DbPath))
             {
                 var collection = db.GetCollection<Ingredient>("Ingredient");
-                var result = collection.Find(ingredient => ingredient.IngredientType == IngredientType.Base).ToList();
-                return result;
+                //var result = collection.Find(ingredient => ingredient.IngredientType == IngredientType.Base).ToList();
+                var result = collection.FindAll();
+                var result2 = new List<Ingredient>();
+                foreach (Ingredient elements in result)
+                    result2.Add(elements);
+
+                return result2;
             }
         }
 

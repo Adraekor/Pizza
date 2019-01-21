@@ -8,9 +8,14 @@ namespace Cours2.Model
 
     public class Ingredient
     {
-        public int Id { get; private set; }
+        public Ingredient()
+        {
+                
+        }
 
-        public IngredientType IngredientType;
+        public int Id { get; set; }
+
+        public IngredientType IngredientType { get; set; }
 
         public string Name { get; set; }
         
