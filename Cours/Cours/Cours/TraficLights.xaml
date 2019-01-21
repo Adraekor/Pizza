@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cours.TraficLights">
+
+    <StackLayout>
+
+        <StackLayout
+            Margin="25,100,25,100"
+            Spacing="30">
+
+            <Label
+                x:Name="RedLight"
+                Text="Red"
+                FontSize="Large"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                HeightRequest="100"
+                BackgroundColor="Red"/>
+
+            <Label
+                x:Name="YellowLight"
+                Text="Yellow"
+                FontSize="Large"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                HeightRequest="100"
+                BackgroundColor="Yellow"/>
+
+            <Label
+                x:Name="GreenLight"
+                Text="Green"
+                FontSize="Large"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                HeightRequest="100"
+                BackgroundColor="Green"/>
+
+        </StackLayout>
+
+        <StackLayout
+            Orientation="Horizontal"
+            Spacing="40"
+            HorizontalOptions="Center">
+
+            <Button
+                x:Name="RedButton"
+                Text="Red on"
+                HeightRequest="100"
+                WidthRequest="150"
+                Clicked="OnRedClicked"/>
+
+            <Button
+                x:Name="YellowButton"
+                Text="Yellow on"
+                HeightRequest="100"
+                WidthRequest="150"
+                Clicked="OnYellowClicked"/>
+
+            <Button
+                x:Name="GreenButton"
+                Text="Green on"
+                HeightRequest="100"
+                WidthRequest="150"
+                Clicked="OnGreenClicked"/>
+
+        </StackLayout>
+        
+        
+    </StackLayout>
+
+</ContentPage>

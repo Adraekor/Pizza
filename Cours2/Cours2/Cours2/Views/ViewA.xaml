@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Cours2.Views.ViewA"
+             Title="{Binding Title}">
+
+
+    <StackLayout
+        HorizontalOptions="FillAndExpand"
+        Margin="70, 150, 70, 100">
+
+        <Entry
+            Text="{Binding UserName}"
+            Placeholder="User name"
+            HorizontalOptions="FillAndExpand"
+            FontSize="Large"
+            Margin="50,0,50,0"/>
+
+        <Entry
+            Text="{Binding Password}"
+            IsPassword="True"
+            Placeholder="Password"
+            HorizontalOptions="FillAndExpand"
+            FontSize="Large"
+            Margin="50,30,50,100"/>
+
+        <Button
+            Text="Validation"
+            Command="{Binding CommandMovePage}"
+            FontSize="Large"
+            Margin="200, 0, 200, 0"
+            Padding="20,20,20,20"/>
+
+    </StackLayout>
+  
+</ContentPage>

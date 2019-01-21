@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Cours2.Views.NewPizza"
+             Title="{Binding Title}">
+
+    <StackLayout
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand"
+        Padding="30, 50, 30, 0">
+
+        <Label
+            Text="Nouvelle pizza"
+            FontSize="100"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            Margin="0, 100, 0, 60"/>
+
+        <StackLayout
+            Orientation="Horizontal"
+            HorizontalOptions="FillAndExpand">
+
+            <Entry
+                Text="{Binding Name}"
+                TextColor="Green"
+                HorizontalOptions="FillAndExpand"
+                Placeholder="Nom"
+                FontAttributes="Bold"
+                Margin="0,0,5,0"
+                FontSize="70"/>
+
+            <Entry
+                Text="{Binding Price}"
+                TextColor="Red"
+                FontSize="50"
+                Placeholder="00"
+                VerticalOptions="Center"
+                HorizontalOptions="EndAndExpand"
+                HorizontalTextAlignment="End"/>
+
+            <Label
+                Text="€"
+                TextColor="Red"
+                FontSize="60"
+                VerticalOptions="Center"
+                HorizontalOptions="End"
+                HorizontalTextAlignment="End"/>
+
+        </StackLayout>
+
+        <Entry
+            Text="{Binding Desc}"
+            Placeholder="Description"
+            Margin="0, 20, 0, 0"
+            HorizontalOptions="FillAndExpand"
+            FontSize="35"/>
+
+        <StackLayout
+            HorizontalOptions="FillAndExpand"
+            Orientation="Horizontal"
+            Margin="0,50,0,0">
+
+            <Label
+                Text="Base : "
+                FontSize="40"
+                FontAttributes="Bold"/>
+
+            <Picker
+                ItemsSource="{Binding ListBaseIngredients}"
+                ItemDisplayBinding="{Binding Name}"
+                SelectedItem="{Binding BaseIngredient}"
+                HorizontalOptions="FillAndExpand"
+                Title="Base"
+                FontSize="40"/>
+
+        </StackLayout>
+
+        <StackLayout
+            HorizontalOptions="FillAndExpand"
+            Orientation="Horizontal"
+            Margin="0,50,0,0">
+
+            <Label
+                Text="Toppings : "
+                FontSize="40"
+                FontAttributes="Bold"/>
+
+            <Picker
+                ItemsSource="{Binding ListIngredients}"
+                ItemDisplayBinding="{Binding Name}"
+                SelectedItem="{Binding SelectedIngredientToAdd}"
+                HorizontalOptions="FillAndExpand"
+                Title="Ingredients disponibles"
+                FontSize="40"/>
+
+        </StackLayout>
+
+        <Label
+            HorizontalOptions="FillAndExpand"
+            Margin="0, 5, 0 , 0"
+            Text="{Binding ListSelectedIngredientsToDisplay}"
+            FontSize="20"/>
+
+        <Button
+            Text="Ajouter la pizza"
+            Command="{Binding CommandAddPizza}"
+            Margin="0, 120, 0, 0"
+            HorizontalOptions="Center"
+            Padding="30, 10, 30, 10"
+            FontSize="50"/>
+
+
+    </StackLayout>
+  
+</ContentPage>

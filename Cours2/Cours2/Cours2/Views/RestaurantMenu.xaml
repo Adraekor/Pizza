@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Cours2.Views.RestaurantMenu"
+             Title="{Binding Title}">
+
+    <StackLayout
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand">
+
+        <Label
+            Text="Menu"
+            FontSize="60"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            Margin="0, 100, 0, 60"/>
+
+        <StackLayout
+            Orientation="Horizontal"
+            VerticalOptions="FillAndExpand">
+
+            <Button
+                Text="Nouvelle pizza"
+                Command="{Binding CommandNewPizza}"
+                Padding="15, 10, 15, 10"
+                Margin="0,0,0,15"
+                FontSize="20"/>
+
+            <Label
+                Text="* Convient aux végétariens"
+                VerticalOptions="End"
+                HorizontalOptions="EndAndExpand"
+                HorizontalTextAlignment="End"
+                FontSize="20"
+                TextColor="Green"
+                Margin="0,0,10,0"/>
+
+        </StackLayout>
+
+        <ListView
+            x:Name="ListPizza"
+            ItemsSource="{Binding Pizzas}"
+            HasUnevenRows="True"
+            SelectionMode="None">
+
+            <ListView.Behaviors>
+                <b:EventToCommandBehavior EventName="ItemTapped" 
+                                      Command="{Binding CommandPizzaDetails}"
+                                      EventArgsParameterPath="Item" />
+            </ListView.Behaviors>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        
+                        <StackLayout
+                            BackgroundColor="Beige"
+                            Orientation="Horizontal"
+                            VerticalOptions="FillAndExpand">
+
+                            <Label
+                                Text="{Binding name}"
+                                TextColor="Green"
+                                FontAttributes="Bold"
+                                FontSize="50"
+                                Margin="20,10,10,5"/>
+
+                            <Label
+                                Text="*"
+                                TextColor="Green"
+                                FontAttributes="Bold"
+                                FontSize="50"
+                                IsVisible="{Binding Vegetarian}"/>
+
+                            <Label
+                                Text="{Binding Price}"
+                                TextColor="Red"
+                                FontSize="30"
+                                VerticalOptions="Center"
+                                HorizontalOptions="EndAndExpand"
+                                HorizontalTextAlignment="End"/>
+                            
+                            <Label
+                                Text="€"
+                                TextColor="Red"
+                                FontSize="30"
+                                VerticalOptions="Center"
+                                HorizontalOptions="End"
+                                HorizontalTextAlignment="End"
+                                Margin="0,0,20,0"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+    </StackLayout>
+
+</ContentPage>
