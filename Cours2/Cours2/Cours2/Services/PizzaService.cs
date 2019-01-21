@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using Cours2.Model;
+using LiteDB;
 
 namespace Cours2.Services
 {
 
     public class PizzaService : IPizzaService
     {
-        
+        private string dbPath;
+
         private List<Pizza> _pizzas;
 
 
@@ -28,12 +31,28 @@ namespace Cours2.Services
             test.AddTopping(new Ingredient("Asperges", IngredientType.Other));
             test.AddTopping(new Ingredient("Poivrons", IngredientType.Other));
             _pizzas.Add(test);
+
+            var docPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            dbPath = Path.Combine(docPath, "PizzaDB.db");
+
+            using (var db = new LiteDatabase(dbPath))
+            {
+                var collection = db.GetCollection<Pizza>("Pizzas");
+                var elements = collection.FindAll();
+                foreach( var currentElement in elements)
+                    _pizzas.Add(currentElement);
+            }
         }
         
 
         public void AddPizza(Pizza pizza)
         {
             _pizzas.Add(pizza);
+            using (var db = new LiteDatabase(dbPath))
+            {
+                var collection = db.GetCollection<Pizza>("Pizzas");
+                collection.Insert(pizza);
+            }
         }
 
         public List<Pizza> GetPizzas()

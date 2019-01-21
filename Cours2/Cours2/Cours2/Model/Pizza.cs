@@ -7,7 +7,7 @@ namespace Cours2.Model
 {
     public class Pizza
     {
-
+        public int Id { get; set; }
         public string name { get; set; }
         public string Description { get; set; }
         public string Price { get; set; }
@@ -15,6 +15,11 @@ namespace Cours2.Model
 
         public Ingredient BaseIngredient { get; set; }
         public List<Ingredient> Ingredients { get; private set; }
+
+        public Pizza()
+        {
+
+        }
 
         public Pizza(string name, string description, string price, Ingredient baseIngredient)
         {
