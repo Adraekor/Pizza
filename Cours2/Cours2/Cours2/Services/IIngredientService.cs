@@ -7,10 +7,15 @@ namespace Cours2.Services
 {
     public interface IIngredientService
     {
-
         List<Ingredient> GetBaseIngredients();
 
         List<Ingredient> GetToppingIngredients();
+
+        List<Ingredient> GetAll();
+
+        Ingredient GetById(int id);
+
+        void Add(Ingredient ingredient);
 
     }
 }

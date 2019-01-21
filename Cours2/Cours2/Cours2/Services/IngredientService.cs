@@ -7,22 +7,28 @@ namespace Cours2.Services
 {
     public sealed class IngredientService : IIngredientService
     {
-        // Ingredients
+        private IngredientClient ingredientClient;
 
         private List<Ingredient> _baseIngredients;
         private List<Ingredient> _toppingIngredients;
 
-        // ---------
-
-
-        // Init
-        
         public IngredientService()
         {
             _baseIngredients = new List<Ingredient>();
             _toppingIngredients = new List<Ingredient>();
 
-            Init();
+            ingredientClient = new IngredientClient();
+
+            Init2();
+
+            _baseIngredients = ingredientClient.GetAllBase();
+            //_toppingIngredients = ingredientClient.GetAllToppings();
+
+        }
+
+        private void Init2()
+        {
+            ingredientClient.Add(new Ingredient("Creme", IngredientType.Base));
         }
 
         private void Init()
@@ -59,8 +65,6 @@ namespace Cours2.Services
             });
         }
 
-        // ---------
-
         public List<Ingredient> GetBaseIngredients()
         {
             return _baseIngredients;
@@ -69,6 +73,25 @@ namespace Cours2.Services
         public List<Ingredient> GetToppingIngredients()
         {
             return _toppingIngredients;
+        }
+
+        public List<Ingredient> GetAll()
+        {
+            var a = new List<Ingredient>();
+            a.AddRange(_toppingIngredients);
+            a.AddRange(_baseIngredients);
+
+            return a;
+        }
+
+        public Ingredient GetById(int id)
+        {
+            return ingredientClient.Get(id);
+        }
+
+        public void Add(Ingredient ingredient)
+        {
+            ingredientClient.Add(ingredient);
         }
     }
 }

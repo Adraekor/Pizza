@@ -8,6 +8,8 @@ namespace Cours2.Model
 
     public class Ingredient
     {
+        public int Id { get; private set; }
+
         public IngredientType IngredientType;
 
         public string Name { get; set; }

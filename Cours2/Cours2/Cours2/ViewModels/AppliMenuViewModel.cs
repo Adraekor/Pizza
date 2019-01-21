@@ -22,7 +22,7 @@ namespace Cours2.ViewModels
 
         private void NavToIngredients()
         {
-            NavigationService.NavigateAsync("NavigationPage/ViewB");
+            NavigationService.NavigateAsync("NavigationPage/Ingredient");
         }
 	}
 }

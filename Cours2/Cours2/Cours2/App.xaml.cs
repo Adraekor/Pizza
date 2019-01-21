@@ -37,6 +37,7 @@ namespace Cours2
             containerRegistry.RegisterForNavigation<RestaurantMenu, RestaurantMenuViewModel>();
             containerRegistry.RegisterForNavigation<PizzaDetails, PizzaDetailsViewModel>();
             containerRegistry.RegisterForNavigation<AppliMenu, AppliMenuViewModel>();
+            containerRegistry.RegisterForNavigation<Ingredient, IngredientViewModel>();
 
             containerRegistry.RegisterSingleton<IPizzaService, PizzaService>();
             containerRegistry.RegisterSingleton<IIngredientService, IngredientService>();
