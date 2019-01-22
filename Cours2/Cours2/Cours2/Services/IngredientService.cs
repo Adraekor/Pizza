@@ -1,7 +1,5 @@
-﻿using System;
+﻿using Cours2.Model;
 using System.Collections.Generic;
-using System.Text;
-using Cours2.Model;
 
 namespace Cours2.Services
 {
@@ -22,7 +20,7 @@ namespace Cours2.Services
             Init2();
 
             _baseIngredients = ingredientClient.GetAllBase();
-            //_toppingIngredients = ingredientClient.GetAllToppings();
+            _toppingIngredients = ingredientClient.GetAllToppings();
 
         }
 

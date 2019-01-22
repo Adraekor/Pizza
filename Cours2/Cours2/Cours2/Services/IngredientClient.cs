@@ -1,6 +1,5 @@
 ﻿using Cours2.Model;
 using LiteDB;
-using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,11 +9,12 @@ namespace Cours2.Services
 {
     public class IngredientClient
 	{
-        public string DbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "PizzaDB.db");
+        public string DbPath;
+
         public IngredientClient()
         {
-            //var docPath = ;
-            //DbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "PizzaDB.db");
+            var docPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            DbPath = Path.Combine(docPath, "PizzaDB.db");
         }
 
         public List<Ingredient> GetAllBase()
@@ -22,13 +22,7 @@ namespace Cours2.Services
             using (var db = new LiteDatabase(DbPath))
             {
                 var collection = db.GetCollection<Ingredient>("Ingredient");
-                //var result = collection.Find(ingredient => ingredient.IngredientType == IngredientType.Base).ToList();
-                var result = collection.FindAll();
-                var result2 = new List<Ingredient>();
-                foreach (Ingredient elements in result)
-                    result2.Add(elements);
-
-                return result2;
+                return collection.Find(ingredient => ingredient.IngredientType == IngredientType.Base).ToList();
             }
         }
 
@@ -37,8 +31,7 @@ namespace Cours2.Services
             using (var db = new LiteDatabase(DbPath))
             {
                 var collection = db.GetCollection<Ingredient>("Ingredient");
-                var result = collection.Find(ingredient => ingredient.IngredientType != IngredientType.Base).ToList();
-                return result;
+                return collection.Find(ingredient => ingredient.IngredientType != IngredientType.Base).ToList();
             }
         }
 
